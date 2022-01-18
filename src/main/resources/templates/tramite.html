@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>Trámites</title>
+
+        <div th:replace="fragments/header::header-css"/>
+
+    </head>
+    <body>
+
+        <div th:replace="fragments/header :: header"/>
+
+        <div class="container">
+
+            <h1>Tr&aacute;mites</h1>
+            <hr/>
+			<a th:href="@{/nuevotra}" class="btn btn-primary">Nuevo Tramite</a>
+			<br/><br/>
+            <table id="employeesTable" class="table table-condensed">
+
+                <!-- Header Table -->
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Numero consecutivo</th>
+                        <th>Fecha de radicado</th>
+                        <th>Nombre del tramite</th>
+                        <th>Descripcion</th>
+                        <th>Persona Trámite</th>
+                        <th>Empleado Tramita</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <!-- Footer Table -->
+                <tbody>
+                    <tr th:each="tramite: ${tramites}">
+                        <td th:text="${tramite.id}" />
+                        <td th:text="${tramite.numecons}" />
+                        <td th:text="${tramite.fechredi}" />
+                        <td th:text="${tramite.nombtram}" />
+                        <td th:text="${tramite.descripc}" />
+                        <td th:text="${tramite.personaId.nombres}" />
+                        <td th:text="${tramite.empleadoId.nombres}" />
+                        <td>
+<a th:href="@{/actuatra(employeeId=${tramite.id})}" class="btn btn-info">Update</a>
+							
+										
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!-- /.container -->
+
+        <div th:replace="fragments/footer :: footer"/>
+
+    </body>
+</html>

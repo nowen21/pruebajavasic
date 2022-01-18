@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>Trámites</title>
+
+        <div th:replace="fragments/header::header-css"/>
+
+    </head>
+    <body>
+
+        <div th:replace="fragments/header :: header"/>
+
+        <div class="container">
+
+            <h1>Nuevo Tr&aacute;mite</h1>
+           
+<form th:action="@{/saveTramite}" th:object="${tramite}" method="POST">
+				
+				<input type="text" th:field="*{numecons}" class="form-control col-4 mb-4" placeholder="Enter Name" />
+				
+                                <input type="date" th:field="*{fechredi}" class="form-control col-4 mb-4" placeholder="Enter email" />
+				
+				<input type="text" th:field="*{nombtram}" class="form-control col-4 mb-4" placeholder="Enter department" />
+				
+                                <input type="text" th:field="*{descripc}" class="form-control col-4 mb-4" placeholder="Enter department" />
+                                
+                                <select th:field="*{personaId}" class="form-control col-4 mb-4">
+                                    <option value="">Seleccione</option>
+                                    <option value="1">Persona</option>
+                                </select>
+                               <select th:field="*{empleadoId}" class="form-control col-4 mb-4">
+                                    <option value="">Seleccione</option>
+                                    <option value="1">Empleado</option>
+                                </select>
+                                
+				<button type="submit" class="btn btn-primary col-2">Save</button>
+				<input type="hidden" th:field="*{id}" />
+				
+			</form>
+			<hr/>
+                        <a th:href="@{/tramites}">Volver a tr&aacute;mites</a>
+        </div>
+        <!-- /.container -->
+
+        <div th:replace="fragments/footer :: footer"/>
+
+    </body>
+</html>
